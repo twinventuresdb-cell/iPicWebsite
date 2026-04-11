@@ -6,192 +6,7 @@
 <title>iPic</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at 50% 20%, #0b1028, #050816 70%);
-  color: white;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.badge {
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: rgba(120, 80, 255, 0.12);
-  border: 1px solid rgba(120, 80, 255, 0.4);
-  color: #c7bfff;
-  font-size: 12px;
-  margin-bottom: 30px;
-}
-
-.logo {
-  width: 170px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 120px rgba(120, 80, 255, 0.9));
-}
-
-.brand {
-  font-size: 110px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  margin: 0;
-  background: linear-gradient(90deg,#9aa8ff,#7dd3fc,#60a5fa,#c084fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h1 {
-  font-size: 44px;
-  margin-top: 25px;
-  font-weight: 600;
-}
-
-.highlight {
-  background: linear-gradient(90deg,#7dd3fc,#a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-p {
-  color: #9ca3af;
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.buttons {
-  margin-top: 30px;
-}
-
-.btn {
-  padding: 16px 34px;
-  border-radius: 999px;
-  text-decoration: none;
-  margin: 10px;
-  display: inline-block;
-  font-weight: 600;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg,#6ee7f9,#a855f7);
-  color: black;
-  box-shadow: 0 0 30px rgba(168,85,247,0.7);
-}
-
-.btn-secondary {
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-}
-
-.scroll {
-  position: absolute;
-  bottom: 30px;
-  font-size: 12px;
-  opacity: 0.4;
-}
-
-/* FEATURES */
-.section {
-  padding: 140px 20px 80px;
-  text-align: center;
-}
-
-.subtitle {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #a78bfa;
-  margin-bottom: 10px;
-}
-
-.section h2 {
-  font-size: 42px;
-  font-weight: 700;
-}
-
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 60px;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 380px;
-  padding: 35px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(14px);
-  text-align: left;
-}
-
-.icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(140,100,255,0.1);
-  border: 1px solid rgba(140,100,255,0.3);
-  font-size: 20px;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.card p {
-  font-size: 14px;
-  color: #9ca3af;
-  line-height: 1.6;
-}
-
-/* FOOTER */
-.footer {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  margin-top: 100px;
-  padding: 25px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-}
-
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-links a {
-  margin: 0 12px;
-  color: #aaa;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.footer-links a:hover {
-  color: #fff;
-}
-
-.footer-right {
-  opacity: 0.6;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -210,8 +25,6 @@ p {
     <a href="#" class="btn btn-primary">Download on App Store</a>
     <a href="#" class="btn btn-secondary">Get it on Google Play</a>
   </div>
-
-  <div class="scroll">SCROLL ↓</div>
 </div>
 
 <div class="section">
@@ -219,19 +32,19 @@ p {
   <h2>Photos are better <span class="highlight">shared</span></h2>
 
   <div class="cards">
-    <div class="card">
+    <div class="feature-card">
       <div class="icon">📁</div>
       <h3>Shared Folders</h3>
       <p>Create dedicated spaces for trips, events, and life moments.</p>
     </div>
 
-    <div class="card">
+    <div class="feature-card">
       <div class="icon">☁️</div>
       <h3>Cloud-Based Storage</h3>
       <p>Every photo is stored securely and accessible anytime.</p>
     </div>
 
-    <div class="card">
+    <div class="feature-card">
       <div class="icon">👥</div>
       <h3>Real-Time Uploads</h3>
       <p>Multiple people upload simultaneously from anywhere.</p>
