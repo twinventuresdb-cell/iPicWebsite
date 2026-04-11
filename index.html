@@ -7,44 +7,138 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Make sure hero takes up full screen to push scroll indicator to the bottom */
+  .hero {
+    position: relative;
+    min-height: 100vh; 
+  }
+
+  /* Logo transparency and floating animation */
+  .logo {
+    background-color: transparent !important;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Professional Reveal Animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered delays for the hero section */
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+  .delay-6 { transition-delay: 0.6s; }
+
+  /* Scroll Indicator Styles */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: inherit;
+    animation: bounce 2s infinite;
+  }
+  
+  .scroll-indicator .mouse {
+    width: 22px;
+    height: 34px;
+    border: 2px solid currentColor;
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  
+  .scroll-indicator .mouse::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 6px;
+    background-color: currentColor;
+    border-radius: 2px;
+    animation: scrollWheel 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
+  }
+  
+  @keyframes scrollWheel {
+    0% { opacity: 1; transform: translate(-50%, 0); }
+    100% { opacity: 0; transform: translate(-50%, 12px); }
+  }
+</style>
 </head>
 
 <body>
 
 <div class="hero">
-  <div class="badge">● NOW AVAILABLE ON IOS & ANDROID</div>
-  <img src="logo.png" class="logo">
-  <div class="brand">iPic</div>
-  <h1>
+  <div class="badge fade-up delay-1">● NOW AVAILABLE ON IOS & ANDROID</div>
+  <img src="logo.png" class="logo fade-up delay-2">
+  <div class="brand fade-up delay-3">iPic</div>
+  <h1 class="fade-up delay-4">
     All your memories.
     <span class="highlight">One shared place.</span>
   </h1>
-  <p>Create shared folders. Upload together. Relive instantly.</p>
+  <p class="fade-up delay-5">Create shared folders. Upload together. Relive instantly.</p>
 
-  <div class="buttons">
+  <div class="buttons fade-up delay-6">
     <a href="#" class="btn btn-primary">Download on App Store</a>
     <a href="#" class="btn btn-secondary">Get it on Google Play</a>
+  </div>
+
+  <div class="scroll-indicator fade-up delay-6">
+    <div class="mouse"></div>
+    <span>Scroll</span>
   </div>
 </div>
 
 <div class="section">
-  <div class="subtitle">WHY IPIC</div>
-  <h2>Photos are better <span class="highlight">shared</span></h2>
+  <div class="subtitle fade-up">WHY IPIC</div>
+  <h2 class="fade-up">Photos are better <span class="highlight">shared</span></h2>
 
   <div class="cards">
-    <div class="feature-card">
+    <div class="feature-card fade-up">
       <div class="icon">📁</div>
       <h3>Shared Folders</h3>
       <p>Create dedicated spaces for trips, events, and life moments.</p>
     </div>
 
-    <div class="feature-card">
+    <div class="feature-card fade-up">
       <div class="icon">☁️</div>
       <h3>Cloud-Based Storage</h3>
       <p>Every photo is stored securely and accessible anytime.</p>
     </div>
 
-    <div class="feature-card">
+    <div class="feature-card fade-up">
       <div class="icon">👥</div>
       <h3>Real-Time Uploads</h3>
       <p>Multiple people upload simultaneously from anywhere.</p>
@@ -70,6 +164,31 @@
     © 2026 iPic. All rights reserved.
   </div>
 </div>
+
+<script>
+  // Intersection Observer for scroll animations
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15 // Triggers when 15% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once it's visible
+        }
+      });
+    }, observerOptions);
+
+    // Start observing all elements with the 'fade-up' class
+    document.querySelectorAll('.fade-up').forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
 
 </body>
 </html>
